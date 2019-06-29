@@ -4,6 +4,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.add_link{
+    text-decoration: none;
     font-size: 60px;
     color: white;
 }
+
+.face{
+    background-image: url('./images/good_day.png');
+    background-position: initial;
+    background-repeat: no-repeat;
+    background-size: 20%;
+    height: 100vh;
+    overflow: scroll;
+    margin: 10%;
+    padding: 0%;
+}
+
