@@ -1,7 +1,17 @@
 body {
-  margin: 0%;
-  padding: 0%;
+  padding: 0;
+  margin: 0;
 }
 .App {
   text-align: center;
+  margin: 0%;
+  padding: 5%;
+  font-family: 'DM Serif Display', serif;
+  background-image: url('../images/flowers.jpg');
+  background-position:center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  overflow: scroll;
 }

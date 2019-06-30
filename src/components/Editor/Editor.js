@@ -1,13 +1,17 @@
-import React,{Component, Fragment} from 'react';
+import React,{Component} from 'react';
 import {Link} from 'react-router-dom'
+import './Editor.scss'
 
 const Editor = props => {
     const {date, onDate, mood, onMood} = props;
 return (
-    <form>
-        <fieldset>
+    <div className="editor__wrapper">
+    <section className="editor__container">
+    <form className="editor__form">
+        <fieldset className="editor__box">
             <label htmlFor="date">Date</label>
             <input 
+            className="editor__text"
             type="date"
             name="date"
             id="date"
@@ -15,32 +19,41 @@ return (
             onChange={onDate}
             />
         </fieldset>
-        <fieldset>
-            <label htmlFor="mood_happy">:)</label>
+        <fieldset className="editor__box">
+            <label className="editor__title" htmlFor="mood_happy">:)</label>
             <input 
+            className="editor__text-faces"
             type="radio"
             name="mood"
             id="mood_happy"
             value="happy"
             onChange={onMood}
             />
-            <label htmlFor="mood_sad">:(</label>
-            <input type="radio"
+            <label className="editor__title" htmlFor="mood_sad">:(</label>
+            <input 
+            className="editor__text-faces"
+            type="radio"
             name="mood"
             id="mood_sad"
             value="sad"
             onChange={onMood}/>
         </fieldset>
-        <fieldset>
+        <fieldset className="editor__box">
             <label htmlFor="message">Message</label>
             <input 
+            className="editor__text"
             type="text"
             name="message"
             id="message"
-            value="¿Por qué es un buen día"
+            value="Why is it a good day?"
             />
         </fieldset>
+        <button>GUARDAR</button>
+
+        <button>Cancelar</button>
     </form>
+    </section>
+    </div>
 )}
 
 export default Editor;
