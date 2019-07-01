@@ -8,8 +8,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      faces: []
+      form: {
+        face: "",
+      },
+      happyMessage: "hidden"
     };
+    // this.showHappyMessage = this.showHappyMessage.bind(this);
+    this.updateForm = this.updateForm.bind(this);
+  }
+ 
+  updateForm(event) {
+    const value =  event.currentTarget.value;
+    const name =  event.currentTarget.name;
+    this.setState(prevState => ({ form: {...prevState.form, [name]: value }}));
   }
 
   render() {
@@ -23,7 +34,12 @@ class App extends Component {
           />
           <Route
             path="/editor"
-            render={routerProps => <Editor match={routerProps.match} />}
+            render={routerProps => <Editor match={routerProps.match} 
+            form={this.state.form}
+            updateForm={this.updateForm}
+            // showHappyMessage={showHappyMessage}
+            // happyMessage={happyMessage}
+            />}
           />
         </Switch>
       </div>
@@ -32,3 +48,18 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+  // showHappyMessage (event) {
+  //   const happyButtonClicked = event.currentTarget.value;
+  //   if (happyButtonClicked === 'happy') {
+  //     this.setState (prevState => {
+  //       return {
+  //         ...prevState,
+  //         happyMessage: ""
+  //       }
+  //     })
+  //   }
+  
+
