@@ -9,18 +9,35 @@ class App extends Component {
     super(props);
     this.state = {
       form: {
-        face: "",
+        face: ""
       },
       happyMessage: "hidden"
     };
-    // this.showHappyMessage = this.showHappyMessage.bind(this);
-    this.updateForm = this.updateForm.bind(this);
+    this.handlerHappyFace = this.handlerHappyFace.bind(this);
   }
- 
+
+  handlerHappyFace (event) {
+    this.updateForm(event)
+    this.showHappyMessage(event)
+  }
+  
   updateForm(event) {
-    const value =  event.currentTarget.value;
-    const name =  event.currentTarget.name;
+    const {value} =  event.currentTarget;
+    const {name} =  event.currentTarget;
     this.setState(prevState => ({ form: {...prevState.form, [name]: value }}));
+  }
+
+  showHappyMessage() {
+    if (this.state.form.face === ":(") {
+      this.setState(prevState => {return {...prevState, happyMessage: ""}})
+    }
+    else if (this.state.form.face === ":)") {
+      this.setState(prevState => {return {...prevState,  happyMessage: "hidden"} })
+    }
+    else if (this.state.form.face === "") {
+      this.setState(prevState => {return {...prevState,  happyMessage: "hidden"} })
+    }
+    else {this.setState(prevState => {return {...prevState,  happyMessage: "hidden"} }) }
   }
 
   render() {
@@ -36,9 +53,8 @@ class App extends Component {
             path="/editor"
             render={routerProps => <Editor match={routerProps.match} 
             form={this.state.form}
-            updateForm={this.updateForm}
-            // showHappyMessage={showHappyMessage}
-            // happyMessage={happyMessage}
+            handlerHappyFace={this.handlerHappyFace}
+            happyMessage={this.state.happyMessage}
             />}
           />
         </Switch>
@@ -47,19 +63,5 @@ class App extends Component {
   }
 }
 
+
 export default App;
-
-
-
-  // showHappyMessage (event) {
-  //   const happyButtonClicked = event.currentTarget.value;
-  //   if (happyButtonClicked === 'happy') {
-  //     this.setState (prevState => {
-  //       return {
-  //         ...prevState,
-  //         happyMessage: ""
-  //       }
-  //     })
-  //   }
-  
-

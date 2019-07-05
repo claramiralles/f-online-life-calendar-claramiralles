@@ -21,21 +21,12 @@
 
     &__box {
         width: 80%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1%;
         border: none;
     }
     &__box-faces {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-    }
-    &__title{
-        width: 5%;
-        padding: 0%;
-        margin: 0%;
     }
     &__text {
         width: 100%;
